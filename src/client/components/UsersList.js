@@ -17,15 +17,20 @@ class UsersList extends Component {
         return (
             <div>
                 Here's big list of users:
-                <ul>{this.renderUsers}</ul>
+                <ul>{this.renderUsers()}</ul>
             </div>
         )
     }
 
 }
 
+function loadData(store) {
+    console.log('load data or YO!')
+    return store.dispatch(fetchUsers())
+}
 function mapStateToProps(state) {
     return { users: state.users }
 }
 
+export { loadData }
 export default connect(mapStateToProps, {fetchUsers})(UsersList)
